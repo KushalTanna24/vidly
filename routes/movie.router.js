@@ -1,18 +1,7 @@
 const express = require("express");
 const router = express.Router();
+const { Movie, validateMovie } = require("../models/movie.js");
 const mongoose = require("mongoose");
-const Joi = require("joi");
-
-const movieSchema = new mongoose.Schema({
-  name: {
-    type: String,
-    required: true,
-    minlength: 5,
-    maxlength: 50,
-  },
-});
-
-const Movie = mongoose.model("movie", movieSchema);
 
 router.get("/", async (req, res) => {
   const result = await Movie.find();
@@ -67,10 +56,5 @@ router.delete("/:id", async (req, res) => {
   movie = await movie.remove();
   res.send(movie);
 });
-
-const validateMovie = (movie) => {
-  const schema = Joi.object({ name: Joi.string().min(5).max(50).required() });
-  return schema.validate(movie);
-};
 
 module.exports = router;

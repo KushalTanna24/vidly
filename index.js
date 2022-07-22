@@ -1,7 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
-const movie = require("./movie.router");
-const customer = require("./customer.router");
+const movie = require("./routes/movie.router");
+const customer = require("./routes/customer.router");
 const app = express();
 
 mongoose.connect("mongodb://localhost/vidly").then(() => {
