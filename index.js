@@ -2,6 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const movie = require("./routes/movie.router");
 const customer = require("./routes/customer.router");
+const genre = require("./routes/genre.router");
 const app = express();
 
 mongoose.connect("mongodb://localhost/vidly").then(() => {
@@ -11,6 +12,7 @@ mongoose.connect("mongodb://localhost/vidly").then(() => {
 app.use(express.json());
 app.use("/movie", movie);
 app.use("/customer", customer);
+app.use("/genre", genre);
 app.get("/", (req, res) => {
   res.send("Hello world");
 });
