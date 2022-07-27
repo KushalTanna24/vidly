@@ -1,7 +1,8 @@
 const express = require("express");
 const router = express.Router();
-const jwt = require("jsonwebtoken");
-const config = require("config");
+const auth = require("../middleware/auth.wt_middleware");
+// const jwt = require("jsonwebtoken");
+// const config = require("config");
 const { User } = require("../models/users.model");
 const bcrypt = require("bcrypt");
 const Joi = require("joi");
@@ -10,7 +11,7 @@ router.get("/", async (req, res) => {
   res.send("Nothing to see here.. why dont you just use post method instead");
 });
 
-router.post("/", async (req, res) => {
+router.post("/", auth, async (req, res) => {
   const { error } = validate(req.body);
   if (error) return res.status(400).send(error.details[0].message);
 
