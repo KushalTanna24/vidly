@@ -24,6 +24,6 @@
     "nodemon": "^2.0.19",
     "npm": "^8.15.0",
     "winston": "^3.8.1",
-    "winston-mongodb": "^3.0.2"
+    "winston-mongodb": "^5.0.7"
   }
 }
